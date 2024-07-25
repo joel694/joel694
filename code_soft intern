@@ -1,12 +1,33 @@
-- 👋 Hi, I’m @joel694
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+import random
 
-<!---
-joel694/joel694 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+# Define patterns and responses
+patterns_responses = {
+    "hi": ["Hello!", "Hi there!", "Hey!"],
+    "how are you": ["I'm doing well, thank you!", "I'm fine, thanks for asking!"],
+    "what's your name": ["I'm just a chatbot.", "I don't have a name, I'm a chatbot!"],
+    "bye": ["Goodbye!", "See you later!", "Bye!"],
+    "default": ["I'm sorry, I don't understand.", "Could you please rephrase that?", "I'm still learning."]
+}
+
+# Define a function to match patterns and generate responses
+def respond(input_text):
+    input_text = input_text.lower()
+    for pattern, responses in patterns_responses.items():
+        if pattern in input_text:
+            return random.choice(responses)
+    return random.choice(patterns_responses["default"])
+
+# Main function to handle user interaction
+def main():
+    print("Welcome to the rule-based chatbot!")
+    print("Type 'bye' to exit.")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'bye':
+            print(respond(user_input))
+            break
+        else:
+            print("Bot:", respond(user_input))
+
+if __name__ == "__main__":
+    main()
