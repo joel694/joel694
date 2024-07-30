@@ -1,12 +1,55 @@
-- 👋 Hi, I’m @joel694
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+import random
 
-<!---
-joel694/joel694 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+# Function to print the Tic-Tac-Toe board
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+# Function to check if someone wins
+def check_win(board, player):
+    for row in board:
+        if all(cell == player for cell in row):
+            return True
+
+    for col in range(3):
+        if all(board[row][col] == player for row in range(3)):
+            return True
+
+    if all(board[i][i] == player for i in range(3)) or all(
+        board[i][2 - i] == player for i in range(3)
+    ):
+        return True
+
+    return False
+
+# Function to make a random move for the AI
+def make_random_move(board):
+    empty_cells = [(i, j) for i in range(3) for j in range(3) if board[i][j] == " "]
+    return random.choice(empty_cells)
+
+# Function to play the Tic-Tac-Toe game
+def play_game():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    players = ["X", "O"]
+    current_player = random.choice(players)
+
+    while True:
+        print_board(board)
+        row, col = make_random_move(board)
+        board[row][col] = current_player
+
+        if check_win(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+
+        if all(board[i][j] != " " for i in range(3) for j in range(3)):
+            print_board(board)
+            print("It's a tie!")
+            break
+
+        current_player = "X" if current_player == "O" else "O"
+
+if __name__ == "__main__":
+    play_game()
