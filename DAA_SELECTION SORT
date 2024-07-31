@@ -1,12 +1,19 @@
-- 👋 Hi, I’m @joel694
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+def selection_sort(arr):
+    n = len(arr)
+    # Traverse through all elements in the array
+    for i in range(n):
+        # Find the minimum element in the remaining unsorted array
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        # Swap the found minimum element with the first element
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
+    return arr
 
-<!---
-joel694/joel694 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+# Example usage
+if __name__ == "__main__":
+    arr = [64, 25, 12, 22, 11]
+    print("Original array:", arr)
+    sorted_arr = selection_sort(arr)
+    print("Sorted array is:", sorted_arr)
