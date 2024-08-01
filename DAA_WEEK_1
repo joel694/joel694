@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+void sortAscending(int arr[], int n) {
+    int temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+void sortDescending(int arr[], int n) {
+    int temp;
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - 1 - i; j++) {
+            if (arr[j] < arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n;
+
+    // Read the number of package times
+    printf("Enter the number of package times: ");
+    scanf("%d", &n);
+
+    int times[n];
+
+    // Read the times to reach destination
+    printf("Enter time to reach destination:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &times[i]);
+    }
+
+    // Sort in ascending order for Test Case 1
+    sortAscending(times, n);
+    printf("Output in ascending order:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%10d\n", times[i]);
+    }
+
+    // Read the times to reach destination again
+    printf("Enter time to reach destination:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &times[i]);
+    }
+
+    // Sort in descending order for Test Case 2
+    sortDescending(times, n);
+    printf("Output in descending order:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%10d\n", times[i]);
+    }
+
+    return 0;
+}
+
