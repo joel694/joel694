@@ -38,3 +38,12 @@ int main() {
     return 0;
 }
 
+
+Unsorted array:
+20 12 10 15 2
+Sorted array in Ascending Order:
+2 10 12 15 20
+
+--------------------------------
+Process exited after 0.06223 seconds with return value 0
+Press any key to continue . . .
