@@ -63,3 +63,5 @@ int main() {
     return 0;
 }
 
+Enter orders Priority Number: 87, 67, 21, 59, 99, 46, 84, 32, 43, 12, 90, 23
+After Sorting Orders Priority: 12,21,23,32,43,46,59,67,84,87,90,99
